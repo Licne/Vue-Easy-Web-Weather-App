@@ -23,6 +23,17 @@
                 </template>
             </ul>
         </div>
+        <!-- 已添加城市列表 -->
+
+        <div class="flex flex-col gap-4">
+            <Suspense>
+                    <CityList/>
+                <template #fallback>
+                    Loading...
+                </template>
+            </Suspense>
+
+        </div>
     </main>
 </template>
 
@@ -30,6 +41,7 @@
 import { ref } from 'vue';
 import axios from 'axios'
 import { useRouter } from 'vue-router';
+import CityList from '@/components/CityList.vue';
 
 // API常量
 const CITY_URL = import.meta.env.VITE_API_CITY_URL;
@@ -87,6 +99,7 @@ const previewCity = (cityResult) => {
         },
         query:{
             preview:true,
+            adcode:cityResult.adcode
         }
     });
 };

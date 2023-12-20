@@ -75,6 +75,7 @@ const addCity = () => {
     const locationObj = {
         id: uid(),
         city: route.params.city,
+        adcode: route.query.adcode,
     }
 
     savedCities.value.push(locationObj);
