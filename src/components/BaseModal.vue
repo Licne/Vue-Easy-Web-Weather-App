@@ -26,9 +26,11 @@ const props = defineProps({
         default:false
     },
 })
-const emits = defineEmits(['close-Modal'])
+const emits = defineEmits(['close-modal'])
+
 
 </script>
+
 
 <style scoped>
 

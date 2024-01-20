@@ -67,6 +67,7 @@ const changeModal = () => {
     isModal.value = !isModal.value;
 }
 
+// 点击加号 添加城市 
 const addCity = () => {
     if(localStorage.getItem("savedCities")) {
         savedCities.value = JSON.parse(localStorage.getItem("savedCities"))

@@ -29,7 +29,7 @@
             <Suspense>
                     <CityList/>
                 <template #fallback>
-                    Loading...
+                    <CItyCardSkeleton/>
                 </template>
             </Suspense>
 
@@ -42,6 +42,7 @@ import { ref } from 'vue';
 import axios from 'axios'
 import { useRouter } from 'vue-router';
 import CityList from '@/components/CityList.vue';
+import CItyCardSkeleton from '@/components/CItyCardSkeleton.vue';
 
 // API常量
 const CITY_URL = import.meta.env.VITE_API_CITY_URL;

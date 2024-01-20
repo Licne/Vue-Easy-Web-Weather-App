@@ -5,6 +5,7 @@
             <p class="text-center bg-weather-secondary text-white py-2 px-1">
                 Loading...♥ <br>
                 若长时间加载请尝试重新搜索或扩大搜索范围
+                <CityViewSkeleton/>
             </p>
         </template>
     </Suspense>
@@ -12,6 +13,7 @@
 
 <script setup>
 import AsyncCityView from '@/components/AsyncCityView.vue';
+import CityViewSkeleton from '@/components/CityViewSkeleton.vue';
 
 
 </script>

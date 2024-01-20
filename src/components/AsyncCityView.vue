@@ -41,14 +41,20 @@
             </div>
         </div>
 
+        <div class="flex items-center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-500" @click="removeCity">
+            <i class="fa-solid fa-trash"></i>
+            <p>移除城市</p>
+        </div>
+
     </div>
 </template>
 
 <script setup>
 import { ref, onBeforeUnmount} from 'vue';
 import axios from 'axios';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter} from 'vue-router';
 import HourlyTime from './HourlyTime.vue';
+// import router from '@/router';
 
 const WEATHER_URL = import.meta.env.VITE_API_WEATHER_URL;
 const API_KEY = import.meta.env.VITE_API_OPEN_WEATHER_API_KEY;
@@ -89,6 +95,9 @@ const getweatherData = async () => {
         const curTemp = getCurrentWeather(weatherData.data);
         weatherData.data.curList = curTemp;
 
+        // 优化动画效果，延迟一秒显示
+        await new Promise((res) => {setTimeout(res,1000)})
+        
         return weatherData.data;
         
     } catch (error) {
@@ -116,6 +125,19 @@ const transTime = () => {
 transTime();
 const currentTimeout = setInterval(transTime, 1000);
 
+const router = useRouter();
+
+const removeCity = () => {
+    const cities = JSON.parse(localStorage.getItem("savedCities"));
+    console.log(route.query);
+    const updatedCities = cities.filter((city) => city.id !== route.query.id);
+    localStorage.setItem("savedCities",JSON.stringify(updatedCities));
+
+    router.push({
+        name:"home"
+    })
+
+}
 
 
 </script>
